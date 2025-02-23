@@ -1,6 +1,6 @@
 import google.generativeai as genai
 from telegram import Update
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from telegram.ext import Updater, CommandHandler, MessageHandler, filters, CallbackContext
 
 # 🔹 Set up Gemini API Key
 API_KEY = "AIzaSyCtIbIdFzOD30o5uLd3AMSKXnrgtWRulRQ"  # Replace with your actual API key
@@ -25,7 +25,7 @@ TELEGRAM_BOT_TOKEN = "7908025680:AAE9UbmSlQKSPzixHIBZa0Bs0rTvAC2R_EI"  # Replace
 updater = Updater(TELEGRAM_BOT_TOKEN, use_context=True)
 dp = updater.dispatcher
 
-dp.add_handler(MessageHandler(Filters.text & ~Filters.command, handle_message))
+dp.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
 # Start the bot
 updater.start_polling()
