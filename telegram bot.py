@@ -24,11 +24,9 @@ genai.configure(api_key=GEMINI_API_KEY)
 
 # Function to process user messages with Gemini AI
 def ask_gemini(user_message):
-    try:
-        response = genai.generate_text(user_message)  # Adjust based on Gemini API usage
-        return response.text
-    except Exception as e:
-        return f"Error: {str(e)}"  # ✅ Now 'e' is properly defined
+    """ Generate AI response for a given message. """
+    response = model.generate_content(user_message)  # Pass only user_message
+    return response.text  # Return AI-generated text
 
 # Handle /start command
 async def start(update: Update, context: CallbackContext):
